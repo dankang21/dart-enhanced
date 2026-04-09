@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling<1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dart-enhanced"
+version = "0.3.0"
+description = "Async Python client for Korea's DART (FSS) OpenAPI with financial statement parsing"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+authors = [
+    { name = "Daniel Kang", email = "dankang21@gmail.com" },
+]
+keywords = [
+    "dart", "opendart", "korea", "finance", "financial-statements",
+    "async", "fss", "disclosure", "korean-stock",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+    "Framework :: AsyncIO",
+]
+dependencies = [
+    "httpx>=0.27.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/dankang21/dart-enhanced"
+Documentation = "https://github.com/dankang21/dart-enhanced#readme"
+Repository = "https://github.com/dankang21/dart-enhanced"
+Issues = "https://github.com/dankang21/dart-enhanced/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.9.0",
+]
+
+[tool.hatch.build.targets.sdist]
+include = ["dart_enhanced/", "LICENSE", "README.md"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
